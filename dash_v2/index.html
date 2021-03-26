@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Dashboard">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ixnamiki Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.4/nv.d3.css">
+
+    <script src="bower_components/angular/angular.min.js"></script>
+
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="bower_components/angular-material/angular-material.min.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="bower_components/angular-nvd3/dist/angular-nvd3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.4/nv.d3.js"></script>
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="default_ui.js"></script>
+    <script type="text/javascript" src="ui.js"></script>
+    <script type="text/javascript" src="joystick.js"></script>
+    <script type="text/javascript" src="UPRWS.js"></script>
+    <!-- <script type="text/javascript" src="client.js"></script> -->
+    <script src="directives/barChart.js"></script>
+    <script src="directives/commChart.js"></script>
+    <script src="directives/circleChart.js"></script>
+    <script src="directives/compass.js"></script>
+</head>
+
+<body ng-controller="uiCtrl" ng-keyup="keydown($event)">
+    <div class="background" id="containerUI" flex="grow" layout="column">
+        <!-- UI Container -->
+        <div layout="row" flex="grow">
+            <div layout="column" flex="grow">
+                <div layout="row" flex="grow">
+                    <!-- first column -->
+                    <div layout="column" flex="40" layout-align="space-around">
+                        <!-- sensors display -->
+                        <div layout="row" flex="grow">
+                            <div layout="column" class=" bWidget box" flex="grow">
+                                <div layout="row" flex="grow">
+                                    <div layout="column" flex="50">
+                                        <div class="minibox" flex layout="column">
+                                            <compass value="data.sensors.gyroAngleX" width="180" height="180"
+                                                style="text-align: center;"></compass>
+                                            <p class="subTitle">Angle gyro X: <span class="value">
+                                                    {{ data.sensors.gyroAngleX }}° </span></p>
+                                            <!-- chart -->
+                                        </div>
+                                        <div flex layout="column" flex="50" layout-align="center stretch">
+                                            <div layout="row" flex="grow" layout-aling="center center">
+                                                <div layout="column" flex="grow">
+                                                    <div class="b-box2" flex layout="row" layout-align="center center">
+                                                        <p>C0<SUB>2</SUB>:
+                                                            <span class="value"> {{ data.sensors.CO }}% </span> </p>
+                                                    </div>
+                                                    <div class="b-box1" flex layout="row" layout-align="center center">
+                                                        <p>Accelerometer:
+                                                            <span class="value"> {{ data.sensors.accelerometer }} m/s
+                                                            </span></p>
+                                                    </div>
+                                                    <div class="b-box2" flex layout="row"></div>
+                                                    <div class="b-box1" flex layout="row"></div>
+                                                    <div class="b-box2" flex layout="row"></div>
+                                                    <div class="b-box1" flex layout="row"></div>
+
+                                                </div>
+                                            </div>
+                                            <!-- chart -->
+                                        </div>
+                                    </div>
+
+                                    <div layout="column" flex="50" layout-aling="center stretch">
+                                        <div class="minibox2" flex layout="column">
+                                            <compass value="data.sensors.gyroAngleY" width="180" height="180"
+                                                style="text-align: center;"></compass>
+                                            <p class="subTitle"> Angle gyro Y: <span class="value">
+                                                    {{ data.sensors.gyroAngleY }}° </span></p>
+                                            <!-- chart -->
+                                        </div>
+
+                                        <div class="minibox" flex="50" layout="column"
+                                            layout-aling="space-around center">
+                                            <p class="title">Encoders</p>
+                                            <div layout="row" flex>
+                                                <div layout="column" flex="grow">
+                                                    <p class="encoderLabel">Left: <span
+                                                            class="value">{{data.motors.encoderLeftSide}} rpm </span>
+                                                    </p>
+                                                    <p class="encoderLabel">Right: <span
+                                                            class="value">{{data.motors.encoderRightSide}} rpm </span>
+                                                    </p>
+                                                    <p class="encoderLabel">RFlippers: <span
+                                                            class="value">{{data.motors.encoderRFlippers}} rpm
+                                                        </span></p>
+                                                    <p class="encoderLabel">BFlippers: <span
+                                                            class="value">{{data.motors.encoderBFlippers}} rpm
+                                                        </span></p>
+                                                    <p class="encoderLabel">Claw: <span
+                                                            class="value">{{data.motors.encoderClaw}} rpm </span>
+                                                    </p>
+                                                </div>
+                                                <div layout="column" flex="grow">
+                                                    <p class="encoderLabel">Arm 1: <span
+                                                            class="value">{{data.motors.encoderArm1}} rpm </span>
+                                                    </p>
+                                                    <p class="encoderLabel">Arm 2: <span
+                                                            class="value">{{data.motors.encoderArm2}} rpm </span>
+                                                    </p>
+                                                    <p class="encoderLabel">Arm 3: <span
+                                                            class="value">{{data.motors.encoderArm3}} rpm </span>
+                                                    </p>
+                                                    <p class="encoderLabel">Arm 4: <span
+                                                            class="value">{{data.motors.encoderArm4}} rpm </span>
+                                                    </p>
+                                                    <p class="encoderLabel">Arm 5: <span
+                                                            class="value">{{data.motors.encoderArm5}} rpm </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <!-- chart -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- charts usage diplay -->
+                        <div layout="row" flex="grow">
+                            <div layout="column" class=" sWidget box" flex="50" layout-align="">
+                                <!-- container -->
+                                <div layout="row" flex="grow">
+                                    <!--  -->
+                                    <div layout="column" flex="50" layout-align="center stretch">
+                                        <div class="minibox" flex="100" layout="column" layout-align="center center">
+                                            <p class="label">Battery Voltage:</p>
+                                            <circle-chart class="circleChart" value="data.power.batteryVoltage" unit="v"
+                                                min="0" max="12" width="70" height="70"></circle-chart>
+                                        </div>
+
+                                        <div class="minibox2" flex="100" layout="column" layout-align="center center">
+                                            <p class="label">Power Draw:</p>
+                                            <circle-chart class="circleChart" value="data.power.totalPowerUse" unit="A"
+                                                min="0" max="40" width="70" height="70"></circle-chart>
+                                        </div>
+                                    </div>
+                                    <!--  -->
+                                    <div layout="column" flex="50" layout-align="center stretch">
+                                        <div class="minibox2" flex="100" layout="column" layout-align="center center">
+                                            <p class="label">CPU use:</p>
+                                            <circle-chart class="circleChart" value="data.power.Cpu" unit="%" min="0"
+                                                max="100" width="70" height="70"></circle-chart>
+                                        </div>
+
+                                        <div class="minibox" flex="100" layout="column" layout-align="center center">
+                                            <p class="label">RAM use:</p>
+                                            <circle-chart class="circleChart" value="data.power.Ram" unit="%" min="0"
+                                                max="100" width="70" height="70"></circle-chart>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- power by device -->
+                            <div layout="column" class="sWidget box" flex="50" layout-align="">
+                                <p class="title">Power usage by device:</p>
+                                <div class="powerChart" layout="row" layout-align="center center">
+                                    <p class="powerLabel">left side</p>
+                                    <bar-chart value="data.power.leftSide" min="0" max="20" width="150" height="12"
+                                        unit="A"></bar-chart>
+                                </div>
+                                <div class="powerChart" layout="row" layout-align="center center">
+                                    <p class="powerLabel">right side</p>
+                                    <bar-chart value="data.power.rightSide" min="0" max="20" width="150" height="12"
+                                        unit="A"></bar-chart>
+                                </div>
+                                <div class="powerChart" layout="row" layout-align="center center">
+                                    <p class="powerLabel">rear flippers</p>
+                                    <bar-chart value="data.power.rearFlippers" min="0" max="20" width="150" height="12"
+                                        unit="A"></bar-chart>
+                                </div>
+                                <div class="powerChart" layout="row" layout-align="center center">
+                                    <p class="powerLabel">back flippers</p>
+                                    <bar-chart value="data.power.backFlippers" min="0" max="20" width="150" height="12"
+                                        unit="A"></bar-chart>
+                                </div>
+                                <div class="powerChart" layout="row" layout-align="center center">
+                                    <p class="powerLabel">Jetson</p>
+                                    <bar-chart value="data.power.Jetson" min="0" max="20" width="150" height="12"
+                                        unit="A"></bar-chart>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end first column -->
+                    <!-- second column -->
+                    <div layout="column" flex="grow">
+                        <div layout="row" flex="grow">
+                            <div layout="column" flex="grow" class="bWidget box">
+                                <md-tabs class="md-primary tab-cs" md-center-tabs>
+                                    <md-tab label="Control">
+                                        <div layout="row" flex="grow" style="height: 100%;">
+                                            <div layout="column" flex="25" layout-aling="center center">
+                                                <p class="title" id="GP_pmt">Press any button</p>
+                                                <div layout="row" flex="30" layout-aling="center center">
+                                                    <div class="gp1" layout="column" flex="50" style="text-align: center;"></div>
+                                                    <div class="gp2" layout="column" flex="50" style="text-align: center;"></div>
+                                                    </div>
+                                                <div layout="row" flex="20">
+                                                    <div layout="column" flex="grow">
+                                                        <div class="GP_buttons"></div>
+                                                    </div>
+                                                </div>
+                                                <div layout="row" flex="20">
+                                                    <div layout="column" flex="grow" class="nm-p">
+                                                        <p>Gripper</p>
+                                                        <p><kbd class="key"> S</kbd> Add 15 degrees to gyro X</p>
+                                                        <p><kbd class="key"> A</kbd> Restore to 0 gyro X</p>
+                                                        <p><kbd class="key"> X</kbd> Add 15 degrees to gyro Y</p>
+                                                        <p><kbd class="key"> Z</kbd> Restore to 0 gyro Y</p>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div layout="column" flex="grow">
+                                                <div layout="row" flex="grow">
+                                                    <div layout="column" flex="grow">
+                                                        <div layout="row" flex="grow">
+                                                            <div layout="column" flex="grow" class="nm-p">
+                                                                <p>Flippers</p>
+                                                                <!-- POSITIVES -->
+                                                                <p><kbd class="key"> E</kbd> Front L +</p>
+                                                                <p><kbd class="key"> R</kbd> Front R +</p>
+                                                                <p><kbd class="key"> D</kbd> Rear L +</p>
+                                                                <p><kbd class="key"> F</kbd> Rear R +</p>
+                                                                <!-- NEGATIVES -->
+                                                                <p><kbd class="key"> T</kbd> Front L -</p>
+                                                                <p><kbd class="key"> Y</kbd> Front R -</p>
+                                                                <p><kbd class="key"> G</kbd> Rear L -</p>
+                                                                <p><kbd class="key"> H</kbd> Rear R -</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div layout="column" flex="grow">
+                                                        <div layout="row" flex="grow">
+                                                            <div layout="column" flex="grow" class="nm-p">
+                                                                <p>General</p>
+                                                                <p><kbd class="key"> SPACE</kbd> Emergency stop</p>
+                                                                <p><kbd class="key"> M</kbd> Robot modes</p>
+                                                                <p><kbd class="key"> -</kbd> </p>
+                                                                <p><kbd class="key"> -</kbd> </p>
+                                                                <p><kbd class="key"> -</kbd> </p>
+                                                                <p>Arrows</p>
+                                                                <p><kbd class="key"> UP</kbd> </p>
+                                                                <p><kbd class="key"> DOWN</kbd> </p>
+                                                                <p><kbd class="key"> LEFT</kbd> </p>
+                                                                <p><kbd class="key"> RIGHT</kbd> </p>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div layout="column" flex="grow">
+                                                        <div layout="row" flex="grow">
+                                                            <div layout="column" flex="grow" class="nm-p">
+                                                                <p><kbd class="key"> -</kbd> </p>
+                                                                <p><kbd class="key"> -</kbd> </p>
+                                                                <p><kbd class="key"> -</kbd> </p>
+                                                                <p><kbd class="key"> -</kbd> </p>
+                                                                <p><kbd class="key"> -</kbd> </p>
+                                                                <p><kbd class="key"> -</kbd> </p>                                                                
+                                                                <p><kbd class="key"> -</kbd> </p>
+                                                                <p><kbd class="key"> -</kbd> </p>
+                                                                <p><kbd class="key"> -</kbd> </p>                                                                
+                                                                <p><kbd class="key"> -</kbd> </p>
+                                                                <p><kbd class="key"> -</kbd> </p>
+                                                                <p><kbd class="key"> -</kbd> </p>                                                                
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </md-tab>
+                                    <md-tab label="Home">
+                                        <div layout="row" flex="grow" layout-aling="space-around center">
+                                            <div layout="column" layout-aling="space-around center" flex="grow">
+                                                <h1 style="text-align: center;">
+                                                    Welcome to
+                                                    <span class="value">UP Robotics</span> Dashboard
+                                                </h1>
+                                                <p style="text-align: center;"><img src="assets/img/logo.png"
+                                                        alt="UP Robotics Logo" style="width: 350px;" class="value"></p>
+                                            </div>
+                                        </div>
+                                    </md-tab>
+                                    <md-tab label="Tasks">
+                                        <div layout="row" flex="grow">
+                                            <div layout="column" flex="grow">
+                                                <table>
+                                                    <thead>
+                                                        <th style="width: 20px; text-align: center;">#</th>
+                                                        <th>Task</th>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td>Verificar conectividad</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </md-tab>
+                                    <md-tab label="Settings">
+                                        <div layout="row" flex="grow">
+                                            <!-- 1,2 sections -->
+                                            <div layout="column" flex="grow">
+                                                <!-- section 1 -->
+                                                <div layout="row" flex="grow">
+                                                    <table>
+                                                        <thead>
+                                                            <th></th>
+                                                            <th>WebSocket Communication</th>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>IP</td>
+                                                                <td><input type="text" name="host" id="host" value="127.0.0.1"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>PORT</td>
+                                                                <td><input type="text" name="port" id="port" value="8888"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>URI</td>
+                                                                <td><input type="text" name="uri" id="uri" value="/ws"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td><input type="submit" value="Connect" id="connect"><input type="submit" value="Disconenct" id="disconnect"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <!-- section 2 -->
+                                                <div layout="row" flex="grow">2</div>
+                                            
+                                            </div>
+                                            <!-- 3,4 sections -->
+                                            <div layout="column" flex="grow">
+
+                                            </div>
+                                            <div layout="row" flex="70">
+                                            </div>
+                                        </div>
+                                    </md-tab>
+                                </md-tabs>
+                            </div>
+                        </div>
+                        <div layout="row" flex="grow">
+                            <div layout="column" flex="35" class="sWidget box" layout-align="">
+                                <p class="title">Communication <span class="value">{{ data.communication.ip }}</span>
+                                </p>
+                                <div class="commChart" layout="row" layout-aling="">
+                                    <comm-chart state="data.communication.robot" width="35  " height="10"></comm-chart>
+                                    <p class="commLabel">Robot</p>
+                                </div>
+                                <div class="commChart" layout="row" layout-aling="">
+                                    <comm-chart state="data.communication.joysticks" width="35" height="10">
+                                    </comm-chart>
+                                    <p class="commLabel">Joysticks</p>
+                                </div>
+                                <br>
+                                <div layout="row" layout-aling="center center" flex="grow" class="btnContainer">
+                                    <div layout="column" layout-aling="" flex="50">
+                                        <div layout="row" layout-aling="" flex="grow">
+                                            <md-checkbox ng-model="data.checkMode.teleOpMode" aria-label="TeleOperated">
+                                                TeleOperated
+                                            </md-checkbox>
+                                        </div>
+                                        <div layout="row" layout-aling="" flex="grow">
+                                            <md-checkbox ng-model="data.checkMode.autoMode" aria-label="Autonomous">
+                                                Autonomous
+                                            </md-checkbox>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div layout="row" layout-aling="center center" flex="grow" class="btnContainer">
+                                    <div layout="column" layout-aling="center center" flex="50">
+                                        <button class="btnDisable">Disable</button>
+                                    </div>
+                                    <div layout="column" layout-aling="center center" flex="50">
+                                        <button class="btnEnable">Enable</button>
+                                    </div>
+                                </div>
+                                <div layout="row" layout-aling="center center" flex="grow" class="btnContainer">
+                                    {{ data.checkMode.mode }} {{ data.state }}
+                                </div>
+                            </div>
+                            <div layout="column" flex="65" class="sWidget box" layout-align="">
+                                <div layout="row" flex="grow">
+                                    <div layout="column" flex="grow">
+                                        <p class="title">Data Log</p>
+                                        <div class="txArea" layout="row" flex="grow">
+                                            <textarea name="dataLog" id="dataLog"> {{ data.datalog.info }} </textarea>
+                                        </div>
+                                        <!--<input type="text" name="datalog" id="dataLog">-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end second column -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "uprashboard",
+  "version": "v0.0.1",
+  "description": "Dashboard for extra robot controls in RoboCup Robot Rescue. Experimental Electron environment.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js"
+  },
+  "author": "Juan Soledad",
+  "repository": {},
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^6.0.12",
+    "jquery": "^3.4.1"
+  },
+  "dependencies": {
+    "python-shell": "^1.0.8",
+    "socket.io": "^2.3.0",
+    "ws": "^7.2.1"
+  }
+}

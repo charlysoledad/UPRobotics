@@ -1,0 +1,387 @@
+:root
+{
+  --bgColor: #21323A;
+  --bgColor2:#1A292F;
+  --bgBoxColor: #2B3A42;
+  --bgBox2Color: #303F46;
+  --valueColor: #00e0fe;
+  --radius0: 0px;
+  --globalFs: 14px;
+}
+
+kbd.key { 
+  background-color: #d4d4d4;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  padding: 5px;
+  color: #000;
+}
+
+.nm-p p{
+  margin: 8px;
+}
+
+.btn_pressed{
+  background-color: #12e912;
+}
+.btn_unpressed{
+  background-color: red;
+}
+.GP_buttons{
+  display: inline-block;
+}
+.GP_button p{
+  font-size: 0.8em;
+  text-align: center;
+  margin: auto;
+}
+
+.GP_button{
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  margin: 2px 3px;
+}
+
+.grid {
+  background-image:
+          repeating-linear-gradient(0deg, transparent, transparent 7px, var(--bgBoxColor) 8px, var(--bgBoxColor) 8px),
+          repeating-linear-gradient(-90deg, transparent, transparent 7px, var(--bgBoxColor) 8px, var(--bgBoxColor) 8px);
+  background-size: 80px 80px;
+}
+
+.GP_axis1, .GP_axis2 {
+  border: 2px solid var(--bgColor2);
+  background-color: var(--bgBox2Color);
+  width: 80px;
+  height: 80px;
+  display: inline-block;
+  position: relative;
+  margin: 5px 5px 0px 5px;
+  text-align: center;
+}
+
+.gamepad-axis-pip1, .gamepad-axis-pip2{
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: red;
+  position: absolute;
+  border: 1px solid white;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-4px) translateY(-4px);
+}
+.gamepad-axis-crosshair-v {
+  position: absolute;
+  background: blue;
+  width: 1px;
+  height: 100%;
+  left: 3px;
+}
+
+.gamepad-axis-crosshair-h {
+  position: absolute;
+  background: blue;
+  width: 100%;
+  height: 1px;
+  top: 3px;
+}
+
+#ball{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+  top: 200px;
+  left: 200px;
+  background-color: green;
+}
+
+.btnContainer{
+  margin: auto 20px;
+}
+
+button{
+  border: 1px solid var(--bgColor);
+  padding: 5px 0;
+  outline: none;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.btnEnable{
+  color: #5ff309;
+  background-color: var(--bgBox2Color);
+}
+
+.btnDisable{
+  color: rgb(165, 2, 2);
+  background-color: var(--bgColor2);
+}
+
+
+ .background{
+    background-color: var(--bgColor);
+    font-size: var(--globalFs);
+  }
+  
+  .bWidget
+  {
+    height: 455px;
+    /*height: 475px;*/
+  }
+
+  .sWidget
+  {
+    height: 250px;
+  }
+
+  .box{
+    background-color: var(--bgBoxColor);
+    margin: 5px;
+    border-radius: var(--radius0);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  
+  .minibox{
+    background-color: var(--bgBoxColor);
+    margin: 0px;
+    border-radius: var(--radius0);
+    width: 100%;    
+  }
+  
+  .minibox2{
+    background-color: var(--bgBox2Color);
+    margin: 0px;
+    border-radius: var(--radius0);
+    width: 100%;
+  }
+  
+  .b-box1{
+    background-color: var(--bgBoxColor);
+    border-radius: var(--radius0);
+    text-align: center;
+  }
+  
+  .b-box2{
+    background-color: var(--bgBox2Color);
+    border-radius: var(--radius0);
+    text-align: center;
+  }
+
+  .tab-cs{
+    height: 455px;
+  }
+  
+  .circleChart{
+    height: 80px;
+    width:80px;
+    margin: auto;
+    display: block;
+  }
+  
+  .clockText{
+    text-align: center;
+    font-size: 3em;
+  }
+  
+  .value{
+    color: var(--valueColor);
+  }
+  
+  .title{
+    font-size: 1.2em;
+    text-align: left;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .subTitle{
+    font-size: 1.1em;
+    text-align: center;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .heading{
+    font-size: 0.8em;
+    text-align: center;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .indicator{
+    margin-left: 10px;
+    text-align: left;
+    font-size: 1em;
+  }
+
+  .label{
+    margin: auto;
+    text-align: center;
+    font-size: 0.9em;
+  }
+  
+  #motorCharts{
+    margin-top: -20px;
+  }
+  
+  .motorContainer{
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .motorLabel{
+    margin: 2px;
+    text-align: left;
+  }
+  
+  .powerLabel{
+    display: block;
+    font-size: 0.9em;
+    text-align: right;
+    margin: auto;
+    margin-right: 10px;
+  }
+  
+  .powerChart{
+    margin-right: 10px;
+    margin-left: 5px;
+  }
+
+  .commChart{
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .commLabel{
+    display: block;
+    text-align: left;
+    margin: auto;
+    margin-left: 20px;
+  }
+  
+  .encoderLabel{
+    display: block;
+    font-size: 0.9em;
+    text-align: left;
+    margin: auto;
+    margin-left: 10px;
+  }
+  #robotDiagram{
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  
+  #autoDiagram{
+    margin-top: -40px;
+  }
+  
+  .buttonLabel{
+    margin: 0px;
+    text-align: center;
+  }
+  
+  .touchButton{
+    /*padding: 20px 6px 20px 6px !important;*/
+    line-height: 5px;
+    height: 80px;
+    width: 120px;
+    margin: 5;
+    background-color: #303F46 !important;
+  }
+  
+  .touchButton.left{
+    width: 80px;
+    margin-right: 0px;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  .touchButton.right{
+    width: 80px;
+    margin-left: 0px;
+    border-radius: 0 3px 3px 0;
+  }
+  
+  .touchButton.autoSelector{
+    width: 120px;
+  }
+  
+  .buttonSelected{
+    background-color: #8D48AB !important;
+  }
+  
+  .buttonText{
+    line-height: 15px;
+  }
+  
+  .touchButton2{
+    height: 50px;
+    width: 100px;
+    margin: 5px;
+    padding: 10px;
+    background-color: #303F46;
+  }
+
+  table, th , td { 
+    border: 1px solid var(--bgColor); 
+    border-collapse: collapse; 
+    padding: 5px;
+ } 
+
+ table th{
+   text-align: left;
+   background-color: var(--bgColor);
+ }
+
+ table tr:nth-child(odd) { 
+    background-color: var(--bgBoxColor)  ; 
+ } 
+
+ table tr:nth-child(even) { 
+    background-color: var(--bgBox2Color)  ; 
+ } 
+
+  md-checkbox{
+    margin-left: 5px !important;
+  }
+  
+  md-input-container{
+    width: 150px;
+  }
+
+  #dataLog{
+    resize: none;
+    background-color: var(--bgColor);
+    height: inherit;
+    border: none;
+    width: 100%;
+    color: white;
+    outline: none;
+
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+  .txArea{
+    margin: 10px;
+    padding: 5px;
+    background-color: var(--bgColor);
+    border-radius: 2px;
+  }
+
+  .camContainer{
+    height: 320px;
+  }
+  .camWidget{
+    width: 468px;
+    height: 352px;
+
+  }

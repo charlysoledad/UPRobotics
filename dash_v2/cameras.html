@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Dashboard">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Ixnamiki Dashboard - Cameras</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css" />
+    <!--<link rel="stylesheet" href="bower_components/angular-layout/dist/angular-layout.min.css">-->
+
+    <script src="bower_components/angular/angular.min.js"></script>
+    <!--<script src="bower_components/angular-layout/dist/angular-layout.min.js"></script>-->
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="bower_components/angular-material/angular-material.min.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="bower_components/angular-nvd3/dist/angular-nvd3.min.js"></script>
+    <script src="ui.js"></script>
+</head>
+
+<body>
+    <div class="background" flex="grow" layout="column">
+        <!-- UI Container -->
+        <div layout="row">
+            <div layout="column" flex="grow">
+                <div layout="row" flex="grow">
+                    <!-- first column -->
+                    <div layout="column">
+                        <div layout="row" flex="grow">
+                            <div layout="column" class="camWidget box" flex="grow" >
+                                <div layout="row" flex="grow" layout-align="space-around center">
+                                    <img src="http://192.168.1.74:5000/video_feed" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                        <div layout="row" flex="grow">
+                            <div layout="column" class="camWidget box" flex="grow" >
+                                <div layout="row" flex="grow" layout-align="space-around center">
+                                    <img src="" alt="cam 3" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- first column -->
+                    <div layout="column" flex="grow">
+                        <div layout="row" flex="grow">
+                            <div layout="column" class=" box" flex="grow" >
+                                <div layout="row" flex="grow" layout-align="space-around center">
+                                    TARGET 1
+                                </div>
+                            </div>
+                        </div>
+                        <div layout="row" flex="grow">
+                            <div layout="column" class=" box" flex="grow" >
+                                <div layout="row" flex="grow" layout-align="space-around center">
+                                        TARGET 2
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- first column -->
+                    <div layout="column">
+                        <div layout="row" flex="grow">
+                            <div layout="column" class="camWidget box" flex="grow" >
+                                <div layout="row" flex="grow" layout-align="space-around center">
+                                    <img src="" alt="cam 2" />
+                                </div>
+                            </div>
+                        </div>
+                        <div layout="row" flex="grow">
+                            <div layout="column" class="camWidget box" flex="grow" >
+                                <div layout="row" flex="grow" layout-align="space-around center">
+                                    <img src="" alt="cam 4" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

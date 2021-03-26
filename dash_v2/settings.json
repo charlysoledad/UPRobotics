@@ -1,0 +1,7 @@
+{
+    "name": "dashboard",
+    "s_width": 1366,
+    "s_height": 768,
+    "server_path": "pyuprserver",
+    "url": "http://localhost:8888"
+}
